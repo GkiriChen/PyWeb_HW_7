@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "pyweb-hw-7"
+version = "0.1.0"
+description = ""
+authors = ["GkiriChen <128749954+GkiriChen@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+alembic = "^1.12.0"
+sqlalchemy = "^2.0.22"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

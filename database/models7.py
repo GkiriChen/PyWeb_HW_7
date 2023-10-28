@@ -18,7 +18,7 @@ class Student(Base):
     email = Column(String(150), nullable=False)
 
     teachers = relationship(
-        "Student", secondary="teachers_to_students", back_populates="students", passive_deletes=True)
+        "Teacher", secondary="teachers_to_students", back_populates="students", passive_deletes=True)
 
 
 ## ----Create teacher----#
@@ -37,6 +37,7 @@ class Teacher(Base):
 ## ----Create TeacherStubent----#
 class TeacherStubent(Base):
     __tablename__ = 'teachers_to_students'
+    id = Column(Integer, primary_key=True)
     teacher_id = Column('teacher_id', ForeignKey(
         'teachers.id', ondelete='CASCADE'))
     student_id = Column('student_id', ForeignKey(
@@ -49,7 +50,7 @@ class Group(Base):
     __tablename__ = 'groups'
     id = Column(Integer, primary_key=True)
     namber = Column(Integer, nullable=False)
-    student = Column(String(150), ForeignKey=('students.name'))
+    student = Column(String(150), ForeignKey('students.name'))
 
 ## ----Create Discipline----#
 
@@ -58,7 +59,7 @@ class Discipline(Base):
     __tablename__ = 'disciplines'
     id = Column(Integer, primary_key=True)
     discipline = Column(String(150), nullable=False)
-    teacher_id = Column(Integer, ForeignKey=('teachers.id'))
+    teacher_id = Column(Integer, ForeignKey('teachers.id'))
 
 
 # ----Create Grade----#

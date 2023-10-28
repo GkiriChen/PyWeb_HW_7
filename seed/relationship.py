@@ -1,7 +1,7 @@
 import random
 
-from datebase.connect_db import session
-from datebase.models7 import Student, Teacher, TeacherStubent
+from database.connect_db import session
+from database.models7 import Student, Teacher, TeacherStubent
 
 
 def create_rel():

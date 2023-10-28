@@ -1,8 +1,8 @@
 import random
 from faker import Faker
 
-from datebase.connect_db import session
-from datebase.models7 import Grade, Discipline, Student
+from database.connect_db import session
+from database.models7 import Grade, Discipline, Student
 
 
 # ----Create greads----#

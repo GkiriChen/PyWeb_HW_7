@@ -1,8 +1,8 @@
 from sqlalchemy.orm import joinedload
 from sqlalchemy import func
 
-from datebase.connect_db import session
-from datebase.models7 import *
+from database.connect_db import session
+from database.models7 import *
 
 # Знайти 5 студентів із найбільшим середнім балом з усіх предметів.
 

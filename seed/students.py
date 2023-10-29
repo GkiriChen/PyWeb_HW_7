@@ -1,3 +1,6 @@
+import sys
+sys.path.append('.')
+
 from faker import Faker
 
 from database.connect_db import session 
@@ -9,9 +12,12 @@ def create_students():
 
     for _ in range(1, 31):
         name_stud = Faker().name()
+        email=name_stud.lower().replace(' ', '_') + '@gmail.com'
+
+        #print(name_stud,'<--->', email)
         student = Student(
             name=name_stud,
-            email=name_stud.replace('-', '_') + '@gmail.com'
+            email=email
         )
 
         session.add(student)

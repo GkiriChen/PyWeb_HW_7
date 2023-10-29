@@ -1,4 +1,6 @@
 import random
+import sys
+sys.path.append('.')
 
 from database.connect_db import session
 from database.models7 import Student, Teacher, TeacherStubent

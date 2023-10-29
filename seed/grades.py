@@ -1,4 +1,7 @@
 import random
+import sys
+sys.path.append('.')
+
 from faker import Faker
 
 from database.connect_db import session
@@ -15,7 +18,7 @@ def create_greads():
 
         for _ in range(random.randint(10, 20)):
             gread = Grade(
-                name=student.name,
+                student_id=student.id,
                 discipline=random.choice(disciplines).discipline,
                 rating=random.randint(1, 10),
                 date_gr=Faker().date_between(start_date='-1y')

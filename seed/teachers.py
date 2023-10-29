@@ -1,3 +1,6 @@
+import sys
+sys.path.append('.')
+
 from faker import Faker
 
 from database.connect_db import session

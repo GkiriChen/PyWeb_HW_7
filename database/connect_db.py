@@ -1,6 +1,7 @@
 import configparser 
 import pathlib
 
+
 from sqlalchemy.engine import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -18,6 +19,6 @@ port = config.get("DB", "port")
 
 url_to_db = f"postgresql://{username}:{password}@{host}:{port}/{db_name}"
 
-engine = create_engine(url_to_db, echo=True, pool_size=5)
+engine = create_engine(url_to_db, echo=False, pool_size=5, pool_pre_ping=True)
 Session = sessionmaker(bind=engine)
 session = Session()

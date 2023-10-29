@@ -19,7 +19,8 @@ class Student(Base):
 
     teachers = relationship(
         "Teacher", secondary="teachers_to_students", back_populates="students", passive_deletes=True)
-
+    # grade = relationship('Grade', back_populates='students')
+    # group = relationship('Group', back_populates='students')
 
 ## ----Create teacher----#
 
@@ -32,7 +33,8 @@ class Teacher(Base):
 
     students = relationship(
         "Student", secondary="teachers_to_students", back_populates="teachers", passive_deletes=True)
-
+    #discipline = relationship('Discipline', back_populates='teachers')
+    
 
 ## ----Create TeacherStubent----#
 class TeacherStubent(Base):
@@ -50,7 +52,10 @@ class Group(Base):
     __tablename__ = 'groups'
     id = Column(Integer, primary_key=True)
     namber = Column(Integer, nullable=False)
-    student = Column(String(150), ForeignKey('students.name'))
+    student_id = Column(Integer, ForeignKey('students.id', ondelete='CASCADE'))
+
+    #student = relationship('Student', back_populates='groups')
+    
 
 ## ----Create Discipline----#
 
@@ -59,14 +64,19 @@ class Discipline(Base):
     __tablename__ = 'disciplines'
     id = Column(Integer, primary_key=True)
     discipline = Column(String(150), nullable=False)
-    teacher_id = Column(Integer, ForeignKey('teachers.id'))
+    teacher_id = Column(Integer, ForeignKey('teachers.id', ondelete='CASCADE'))
 
+    #teacher = relationship('Teacher', back_populates='disciplines')
+    #grade = relationship('Grade', back_populates='disciplines')
 
 # ----Create Grade----#
 class Grade(Base):
     __tablename__ = 'grades'
     id = Column(Integer, primary_key=True)
-    name = Column(String(150), nullable=False)
+    student_id = Column(Integer, ForeignKey('students.id', ondelete='CASCADE'))
     discipline = Column(String(150), nullable=True)
     rating = Column(Integer, nullable=True)
     date_gr = Column(DateTime, default=datetime.now())
+
+    #student = relationship('Student', back_populates='grades')
+    #discipline = relationship('Discipline', back_populates='grades')
